@@ -1,26 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Popup script loaded!");
 
-    const button = document.getElementById("highlightButton");
+    const button = document.getElementById("processButton"); // Zmień na ID swojego przycisku
 
-        button.addEventListener("click", () => {
-            console.log("Button clicked!");
-            // Send message to content script to highlight paragraphs
-            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-                // Send message to the content script of the active tab
-                chrome.scripting.executeScript({
-                    target: { tabId: tabs[0].id },
-                    func: highlightParagraphs
-                });
+    button.addEventListener("click", () => {
+        console.log("Button clicked!");
+
+        // Pobierz aktywną kartę
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            const activeTab = tabs[0];
+
+            // Wstrzyknij kod obsługujący przetwarzanie strony z Readability
+            chrome.scripting.executeScript({
+                target: { tabId: activeTab.id },
+                files: ["popup/Readability.js", "popup/content.js"]
             });
         });
-
-});
-
-// Function to highlight paragraphs (this will be executed in the content script context)
-function highlightParagraphs() {
-    const paragraphs = document.querySelectorAll('p');
-    paragraphs.forEach(paragraph => {
-        paragraph.style.backgroundColor = 'yellow';  // Highlight paragraphs
     });
-}
+});
