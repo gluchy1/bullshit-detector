@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Readability Plugin",
   "version": "1.0",
-  "description": "Uruchamia moduł Readability na aktualnej stronie.",
+  "description": "Przetwarza stronę przy użyciu Readability i zastępuje jej zawartość.",
   "permissions": ["scripting", "activeTab"],
   "host_permissions": ["<all_urls>"],
   "action": {

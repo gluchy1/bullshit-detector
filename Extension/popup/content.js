@@ -10,8 +10,23 @@
         if (article) {
             console.log("Processed article:", article);
 
-            // Wyświetl przetworzony tytuł i treść w alercie (lub możesz użyć innego sposobu)
-            alert(`Tytuł: ${article.title}\n\nTreść: ${article.textContent.substring(0, 500)}...`);
+            // Zastąp zawartość strony nową treścią
+            document.body.innerHTML = `
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        line-height: 1.6;
+                        margin: 20px;
+                        padding: 0;
+                        color: #333;
+                    }
+                    h1 {
+                        margin-bottom: 20px;
+                    }
+                </style>
+                <h1>${article.title}</h1>
+                <div>${article.content}</div>
+            `;
         } else {
             alert("Nie udało się przetworzyć artykułu.");
         }
