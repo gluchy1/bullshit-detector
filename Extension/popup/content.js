@@ -17,8 +17,8 @@
                         font-family: Arial, sans-serif;
                         line-height: 1.6;
                         margin: 20px;
-                        padding: 0;
-                        color: #333;
+                        padding: 5;
+                        color: #FFFFFF;
                     }
                     h1 {
                         margin-bottom: 20px;
