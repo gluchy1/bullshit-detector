@@ -19,13 +19,31 @@
                         margin: 20px;
                         padding: 5;
                         color: #FFFFFF;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .content {
+                        max-width: 50%;
                     }
                     h1 {
                         margin-bottom: 20px;
                     }
+                    @media (prefers-color-scheme: light) {
+                        body {
+                            background-color: white;
+                            color: black;
+                        }
+                    }
+                    @media (prefers-color-scheme: dark) {
+                        body {
+                            background-color: #202124;
+                            color: white;
+                        }
                 </style>
-                <h1>${article.title}</h1>
-                <div>${article.content}</div>
+                <div class="content">
+                    <h1>${article.title}</h1>
+                    <div>${article.content}</div>
+                </div>
             `;
         } else {
             alert("Nie udało się przetworzyć artykułu.");
