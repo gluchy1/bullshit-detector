@@ -1,20 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Popup script loaded!");
+    const button = document.getElementById("processButton");
+    const field = document.getElementById("tokeninput");
 
-    const button = document.getElementById("processButton"); // Zmień na ID swojego przycisku
+    // Load saved token on popup open
+    chrome.storage.local.get(['GITHUB_TOKEN'], (result) => {
+        if (result.GITHUB_TOKEN) {
+            field.value = result.GITHUB_TOKEN;
+            token = result.GITHUB_TOKEN;
+            button.disabled = false;
+        }
+    });
 
-    button.addEventListener("click", () => {
-        console.log("Button clicked!");
+    // Handle token input changes
+    field.addEventListener("input", (e) => {
+        const token = e.target.value.trim();
+        button.disabled = token.length === 0;
+        chrome.storage.local.set({ GITHUB_TOKEN: token });
+    });
 
-        // Pobierz aktywną kartę
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            const activeTab = tabs[0];
+    // Handle process button click
+    button.addEventListener("click", async () => {
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        
+        if (!tab?.id) return;
 
-            // Wstrzyknij kod obsługujący przetwarzanie strony z Readability
-            chrome.scripting.executeScript({
-                target: { tabId: activeTab.id },
-                files: ["popup/Readability.js", "popup/content.js"]
+        try {
+            // Inject dependencies
+            await chrome.scripting.executeScript({
+                target: { tabId: tab.id },
+                files: ["popup/Readability.js"]
             });
-        });
+
+            // Inject content script
+            await chrome.scripting.executeScript({
+                target: { tabId: tab.id },
+                files: ["popup/content.js"]
+            });
+            
+            // Close popup after injection
+            window.close();
+        } catch (error) {
+            console.error("Injection failed:", error);
+            alert("Błąd podczas przetwarzania strony!");
+        }
     });
 });

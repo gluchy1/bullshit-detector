@@ -3,7 +3,7 @@
   "name": "Readability Plugin",
   "version": "1.0",
   "description": "Przetwarza stronę przy użyciu Readability i zastępuje jej zawartość.",
-  "permissions": ["scripting", "activeTab"],
+  "permissions": ["scripting", "activeTab", "storage"],
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup/popup.html",

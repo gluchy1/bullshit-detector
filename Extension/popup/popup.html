@@ -1,13 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Readability Popup</title>
+    <style>
+        body {
+            min-width: 200px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+        input {
+            width: 90%;
+            margin: 5px 0;
+            padding: 8px;
+        }
+        button {
+            width: 90%;
+            padding: 10px;
+            background: #0078d4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
     <script defer src="popup.js"></script>
 </head>
 <body>
-<h1>Readability Tool</h1>
-<button id="processButton">Przetwórz Stronę</button>
+    <h2>Readability Tool</h2>
+    <input type="password" id="tokeninput" placeholder="Wprowadź swój token API">
+    <button id="processButton" disabled>Przetwórz Stronę</button>
 </body>
 </html>
