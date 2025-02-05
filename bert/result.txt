@@ -1,0 +1,22 @@
+Trump agrees to pause tariffs on Canada in exchange for more border enforcement. {'neg': 0.0, 'neu': 0.87, 'pos': 0.13, 'compound': 0.2023}
+President Donald Trump will pause additional tariffs on Canadian imports for 30 days after a call with Prime Minister Justin Trudeau, who made some concessions to temporarily stave off the levies. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+Trump and Trudeau spoke via phone on Monday, hours before additional 25% tariffs were to take effect on Canadian goods coming into the United States. {'neg': 0.0, 'neu': 0.896, 'pos': 0.104, 'compound': 0.4215}
+In a post on X, Trudeau said Canada will implement a $1.3 billion border plan and appoint a fentanyl czar. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+In addition, Canada will reinforce its border with new helicopters, technology, personnel and enhanced coordination with American authorities. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+He added that nearly 10,000 personnel are and will be working on border protection. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+Trump defends tariffs, accuses Canada of being 'very abusive of the United States.' {'neg': 0.35, 'neu': 0.508, 'pos': 0.142, 'compound': -0.624}
+President Donald Trump talks with Canadian Prime Minister Justin Trudeau during the plenary session of the NATO summit in London on Dec. 4, 2019. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+We will list cartels as terrorists, ensure 24/7 eyes on the border, launch a Canada-U.S. Joint Strike Force to combat organized crime, fentanyl and money laundering, Trudeau wrote. {'neg': 0.31, 'neu': 0.62, 'pos': 0.07, 'compound': -0.836}
+I have also signed a new intelligence directive on organized crime and fentanyl and we will be backing it with $200 million. {'neg': 0.131, 'neu': 0.712, 'pos': 0.157, 'compound': -0.0772}
+Proposed tariffs will be paused for at least 30 days while we work together, he added. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+Trump has long said Canada and Mexico have failed to do enough to prevent the flow of illegal migrants and drugs, particularly fentanyl, from those nations into the U.S. {'neg': 0.203, 'neu': 0.765, 'pos': 0.032, 'compound': -0.7783}
+In addition, Trump claims the U.S. has subsidized Canada to the tune of $200 billion annually. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+Overdose epidemic: Bipartisan senators target fentanyl classification as lapse approaches. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+These bags of fentanyl were seized in Nogales, Arizona, in October 2022. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+We need to protect Americans, and it is my duty as President to ensure the safety of all, Trump wrote in a statement on Saturday, when he imposed the tariffs. {'neg': 0.037, 'neu': 0.737, 'pos': 0.227, 'compound': 0.7717}
+I made a promise on my campaign to stop the flood of illegal aliens and drugs from pouring across our Borders, and Americans overwhelmingly voted in favor of it. {'neg': 0.201, 'neu': 0.661, 'pos': 0.138, 'compound': -0.3182}
+Hours before his call with Trudeau, Mexican President Claudia Sheinbaum said she would deploy 10,000 troops to the U.S.-Mexico border over tariff threats. {'neg': 0.113, 'neu': 0.887, 'pos': 0.0, 'compound': -0.4215}
+Trump has promised to impose a 25% tariff on all Canadian and Mexican goods, as well as a 10% tariff on Canadian energy and a 10% tariff on all goods entering the U.S. from China. {'neg': 0.055, 'neu': 0.777, 'pos': 0.168, 'compound': 0.5423}
+The tariffs on Canada and China were set to go into effect Tuesday at midnight. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+Trucks drive across the Blue Water Bridge at the border crossing between the U.S. and Point Edward in Ontario, Canada, on Feb. 3, 2025. {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+Threats prompted leaders in multiple Canadian provinces to pledge to remove American alcohol from store shelves. {'neg': 0.157, 'neu': 0.843, 'pos': 0.0, 'compound': -0.4215}

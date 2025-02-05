@@ -1,38 +1,193 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Readability Popup</title>
+    <!-- Ładujemy czcionkę Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet" />
     <style>
+        /* Globalny reset i box-sizing */
+        * {
+            box-sizing: border-box;
+        }
         body {
-            min-width: 200px;
-            padding: 10px;
-            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            /* Nie modyfikujemy tła – popup tworzony przez chrome.windows.create */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-        input {
-            width: 90%;
-            margin: 5px 0;
-            padding: 8px;
+        /* Kontener – styl przypominający kartkę w stylu GitHuba */
+        .container {
+            position: relative;
+            width: 360px;
+            height: 500px;
+            background: linear-gradient(135deg, #ffffff, #f6f8fa);
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(27, 31, 35, 0.12),
+            0 1px 2px rgba(27, 31, 35, 0.24);
+            overflow: hidden;
+            padding: 30px;
         }
-        button {
-            width: 90%;
-            padding: 10px;
-            background: #0078d4;
-            color: white;
+        /* Obszar zawartości – ustawiony absolutnie, wyśrodkowany */
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        /* Główny widok – startowo widoczny */
+        #mainContent {
+            transform: translateX(0);
+            opacity: 1;
+            z-index: 1;
+        }
+        /* Widok ustawień – startowo wysunięty poza kontener */
+        #settingsContent {
+            transform: translateX(100%);
+            opacity: 0;
+            z-index: 0;
+        }
+        /* Animacja przejścia przy przełączaniu widoku */
+        .show-settings #mainContent {
+            transform: translateX(-100%);
+            opacity: 0;
+            z-index: 0;
+        }
+        .show-settings #settingsContent {
+            transform: translateX(0);
+            opacity: 1;
+            z-index: 1;
+        }
+        /* Przycisk przełączający widok – ikona (domyślnie kołowrotek) */
+        #toggleButton {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
             border: none;
+            font-size: 24px;
             cursor: pointer;
+            transition: transform 0.3s ease;
+            color: #586069;
+            z-index: 2;
         }
-        button:disabled {
-            background: #cccccc;
+        #toggleButton:hover {
+            transform: rotate(30deg);
+        }
+        /* Główny widok */
+        #mainContent h2 {
+            margin: 0 0 20px;
+            font-size: 24px;
+            color: #24292e;
+        }
+        #mainContent input[type="password"] {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #d1d5da;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #24292e;
+        }
+        #mainContent input[type="password"]:focus {
+            outline: none;
+            border-color: #0366d6;
+            box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.3);
+        }
+        #mainContent button#processButton {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            background: #2ea44f;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        #mainContent button#processButton:hover:enabled {
+            background: #22863a;
+        }
+        #mainContent button#processButton:disabled {
+            background: #ccc;
             cursor: not-allowed;
+        }
+        /* Widok ustawień */
+        #settingsContent h2 {
+            margin: 0 0 20px;
+            font-size: 24px;
+            color: #24292e;
+        }
+        /* Kontener na opcje – ustawione w jednym wierszu */
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #24292e;
+        }
+        .option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #0366d6;
+        }
+        .option label {
+            margin-left: 8px;
         }
     </style>
     <script defer src="popup.js"></script>
 </head>
 <body>
-    <h2>Readability Tool</h2>
-    <input type="password" id="tokeninput" placeholder="Wprowadź swój token API">
-    <button id="processButton" disabled>Przetwórz Stronę</button>
+<div class="container" id="container">
+    <!-- Przycisk przełączający widok -->
+    <button id="toggleButton" title="Opcje dodatkowe">&#9881;</button>
+    <!-- Główny widok -->
+    <div class="content" id="mainContent">
+        <h2>Readability Tool</h2>
+        <input type="password" id="tokeninput" placeholder="Wprowadź swój token API" />
+        <button id="processButton" disabled>Przetwórz Stronę</button>
+    </div>
+    <!-- Widok ustawień -->
+    <div class="content" id="settingsContent">
+        <h2>Ustawienia</h2>
+        <div class="options-container">
+            <div class="option">
+                <input type="checkbox" id="readabilityMode" />
+                <label for="readabilityMode">Readability Mode</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="aiSummarizer" />
+                <label for="aiSummarizer">AI Summarizer</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="bullshitScore" />
+                <label for="bullshitScore">Bullshit Score</label>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
